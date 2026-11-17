@@ -1,0 +1,450 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Admin | Tech Revision Game</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/css/style.css"
+    >
+    <link
+        rel="stylesheet"
+        href="/static/css/admin.css"
+    >
+
+    <script
+        src="/static/js/admin.js"
+        defer
+    ></script>
+    <script
+        src="/static/js/question-bank.js"
+        defer
+    ></script>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="brand">
+            <span class="brand-icon">✦</span>
+            <span>TECH REVISION GAME</span>
+        </div>
+
+        <span class="header-label">
+            ADMIN CONTROL PANEL
+        </span>
+    </header>
+
+    <main class="admin-container">
+
+        <!-- Login -->
+        <section
+            id="login-view"
+            class="admin-panel"
+        >
+            <div class="admin-heading">
+                <span class="admin-symbol">🔐</span>
+                <h1>Admin Login</h1>
+                <p>
+                    Authenticate to manage your MCQ
+                    question bank.
+                </p>
+            </div>
+
+            <form id="login-form">
+                <label for="admin-key">
+                    Admin Secret Key
+                </label>
+
+                <input
+                    id="admin-key"
+                    type="password"
+                    placeholder="Enter your admin key"
+                    autocomplete="off"
+                    required
+                >
+
+                <button type="submit">
+                    Unlock Admin Panel
+                </button>
+
+                <p
+                    id="login-message"
+                    role="status"
+                ></p>
+            </form>
+        </section>
+
+        <!-- Dashboard -->
+        <section
+            id="admin-dashboard"
+            hidden
+        >
+            <div class="admin-topbar">
+                <div>
+                    <span class="eyebrow">
+                        ADMINISTRATION
+                    </span>
+
+                    <h1>MCQ Question Management</h1>
+
+                    <p>
+                        Upload and manage multiple-choice
+                        questions for every technology world.
+                    </p>
+                </div>
+
+                <button
+                    id="logout-button"
+                    class="logout-button"
+                    type="button"
+                >
+                    Logout
+                </button>
+            </div>
+
+            <!-- Upload -->
+            <section class="admin-panel">
+                <h2>Upload MCQ Questions</h2>
+
+                <p>
+                    Import questions with four options,
+                    one correct answer, and an explanation.
+                    Existing questions are preserved;
+                    duplicates are skipped.
+                </p>
+
+                <form id="upload-form">
+                    <label for="technology-select">
+                        Technology World
+                    </label>
+
+                    <select
+                        id="technology-select"
+                        required
+                    >
+                        <option value="">
+                            Select technology
+                        </option>
+                    </select>
+
+                    <label for="zone-select">
+                        Learning Zone
+                    </label>
+
+                    <select
+                        id="zone-select"
+                        required
+                    >
+                        <option value="basics">
+                            Basics
+                        </option>
+                        <option value="interview">
+                            Interview
+                        </option>
+                        <option value="coding">
+                            Coding
+                        </option>
+                    </select>
+
+                    <label for="question-file">
+                        MCQ File (JSON or CSV)
+                    </label>
+
+                    <input
+                        id="question-file"
+                        type="file"
+                        accept=".json,.csv"
+                        required
+                    >
+
+                    <p class="mcq-help-text">
+                        Each question must include options
+                        A, B, C, D, a correct_answer
+                        (A/B/C/D), and an explanation.
+                        Maximum file size: 5 MB.
+                    </p>
+
+                    <button type="submit">
+                        Upload MCQs
+                    </button>
+                </form>
+
+                <p
+                    id="upload-message"
+                    role="status"
+                ></p>
+
+                <div
+                    id="upload-results"
+                    hidden
+                >
+                    <h3>Import Results</h3>
+
+                    <div class="result-grid">
+                        <div>
+                            <strong id="added-count">
+                                0
+                            </strong>
+                            <span>Questions Added</span>
+                        </div>
+
+                        <div>
+                            <strong id="skipped-count">
+                                0
+                            </strong>
+                            <span>Duplicates Skipped</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Question Bank -->
+            <section
+                class="admin-panel"
+                id="question-bank-panel"
+            >
+                <div class="bank-heading">
+                    <div>
+                        <h2>Question Bank</h2>
+                        <p>
+                            Browse, search, edit, and
+                            delete MCQ questions.
+                        </p>
+                    </div>
+
+                    <button
+                        type="button"
+                        id="refresh-questions"
+                    >
+                        Refresh
+                    </button>
+                </div>
+
+                <div class="bank-filters">
+                    <div>
+                        <label for="bank-technology">
+                            Technology
+                        </label>
+
+                        <select
+                            id="bank-technology"
+                        ></select>
+                    </div>
+
+                    <div>
+                        <label for="bank-zone">
+                            Zone
+                        </label>
+
+                        <select id="bank-zone">
+                            <option value="basics">
+                                Basics
+                            </option>
+                            <option value="interview">
+                                Interview
+                            </option>
+                            <option value="coding">
+                                Coding
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="bank-stats">
+                    <div>
+                        <strong id="total-count">
+                            0
+                        </strong>
+                        <span>Total Questions</span>
+                    </div>
+
+                    <div>
+                        <strong id="basics-count">
+                            0
+                        </strong>
+                        <span>Basics</span>
+                    </div>
+
+                    <div>
+                        <strong id="interview-count">
+                            0
+                        </strong>
+                        <span>Interview</span>
+                    </div>
+
+                    <div>
+                        <strong id="coding-count">
+                            0
+                        </strong>
+                        <span>Coding</span>
+                    </div>
+                </div>
+
+                <p
+                    id="playable-count"
+                    class="mcq-help-text"
+                >
+                    0 playable MCQs
+                </p>
+
+                <label for="question-search">
+                    Search Questions
+                </label>
+
+                <input
+                    id="question-search"
+                    type="search"
+                    placeholder="Search question or explanation..."
+                    maxlength="200"
+                >
+
+                <p
+                    id="bank-message"
+                    role="status"
+                ></p>
+
+                <div id="questions-list"></div>
+
+                <div class="bank-pagination">
+                    <button
+                        type="button"
+                        id="previous-page"
+                    >
+                        Previous
+                    </button>
+
+                    <span id="page-indicator">
+                        Page 1
+                    </span>
+
+                    <button
+                        type="button"
+                        id="next-page"
+                    >
+                        Next
+                    </button>
+                </div>
+            </section>
+        </section>
+
+        <!-- MCQ Editor -->
+        <dialog
+            id="question-editor"
+            class="question-dialog mcq-editor-dialog"
+        >
+            <form id="edit-question-form">
+                <h2>Edit MCQ Question</h2>
+
+                <p class="mcq-help-text">
+                    Update the question, four answer
+                    choices, correct option, and explanation.
+                </p>
+
+                <label for="edit-question-text">
+                    Question
+                </label>
+
+                <textarea
+                    id="edit-question-text"
+                    rows="3"
+                    required
+                ></textarea>
+
+                <label for="edit-option-a">
+                    Option A
+                </label>
+
+                <textarea
+                    id="edit-option-a"
+                    rows="2"
+                    required
+                ></textarea>
+
+                <label for="edit-option-b">
+                    Option B
+                </label>
+
+                <textarea
+                    id="edit-option-b"
+                    rows="2"
+                    required
+                ></textarea>
+
+                <label for="edit-option-c">
+                    Option C
+                </label>
+
+                <textarea
+                    id="edit-option-c"
+                    rows="2"
+                    required
+                ></textarea>
+
+                <label for="edit-option-d">
+                    Option D
+                </label>
+
+                <textarea
+                    id="edit-option-d"
+                    rows="2"
+                    required
+                ></textarea>
+
+                <label for="edit-correct-answer">
+                    Correct Answer
+                </label>
+
+                <select
+                    id="edit-correct-answer"
+                    required
+                >
+                    <option value="A">Option A</option>
+                    <option value="B">Option B</option>
+                    <option value="C">Option C</option>
+                    <option value="D">Option D</option>
+                </select>
+
+                <label for="edit-explanation">
+                    Answer Explanation
+                </label>
+
+                <textarea
+                    id="edit-explanation"
+                    rows="5"
+                    placeholder="Explain why the correct option is right..."
+                    required
+                ></textarea>
+
+                <p
+                    id="edit-message"
+                    role="status"
+                ></p>
+
+                <div class="dialog-actions">
+                    <button
+                        type="button"
+                        id="cancel-edit"
+                        class="secondary-button"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        id="save-question"
+                    >
+                        Save Changes
+                    </button>
+                </div>
+            </form>
+        </dialog>
+    </main>
+</body>
+</html>

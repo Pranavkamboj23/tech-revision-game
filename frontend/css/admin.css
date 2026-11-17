@@ -1,0 +1,490 @@
+
+.admin-container {
+    max-width: 850px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.admin-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 35px;
+    margin-bottom: 30px;
+}
+
+.admin-heading {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.admin-symbol {
+    font-size: 45px;
+}
+
+.admin-heading h1 {
+    margin-bottom: 10px;
+}
+
+.admin-heading p,
+.admin-panel > p,
+.admin-topbar p {
+    color: var(--muted);
+}
+
+#login-form,
+#upload-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 25px;
+}
+
+#login-form button,
+#upload-form button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+#login-form button:hover,
+#upload-form button:hover {
+    background: var(--accent);
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+select {
+    background: #140B22;
+    color: white;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 14px;
+    font: inherit;
+}
+
+input[type="file"] {
+    cursor: pointer;
+}
+
+.admin-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.logout-button {
+    background: transparent;
+    color: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 18px;
+    cursor: pointer;
+}
+
+#login-message,
+#upload-message {
+    min-height: 22px;
+    overflow-wrap: anywhere;
+}
+
+#upload-results {
+    margin-top: 25px;
+    padding: 20px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+.result-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.result-grid > div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: #140B22;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+}
+
+.result-grid strong {
+    font-size: 30px;
+    color: #D6A0FF;
+}
+
+.result-grid span {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+@media (max-width: 600px) {
+    .admin-topbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .admin-panel {
+        padding: 22px;
+    }
+}
+
+.bank-heading,
+.bank-pagination,
+.dialog-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.bank-heading {
+    margin-bottom: 24px;
+}
+
+.bank-filters {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.bank-filters > div,
+#edit-question-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.bank-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.bank-stats > div {
+    background: #241333;
+    border: 1px solid #503068;
+    border-radius: 12px;
+    padding: 18px 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.bank-stats strong {
+    color: #d6a0ff;
+    font-size: 26px;
+}
+
+.bank-stats span {
+    color: #bbaaca;
+    font-size: 12px;
+}
+
+#question-search,
+.question-dialog textarea {
+    width: 100%;
+    box-sizing: border-box;
+    background: #140b22;
+    color: white;
+    border: 1px solid #604276;
+    border-radius: 10px;
+    padding: 13px;
+    font: inherit;
+}
+
+#question-search {
+    margin: 10px 0 20px;
+}
+
+.question-card {
+    background: #241333;
+    border: 1px solid #503068;
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.question-card h3 {
+    margin: 0 0 12px;
+    font-size: 16px;
+    overflow-wrap: anywhere;
+}
+
+.question-answer {
+    color: #c7b7d6;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    line-height: 1.6;
+}
+
+.question-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.question-actions button,
+.bank-pagination button,
+.bank-heading button,
+.dialog-actions button {
+    padding: 10px 16px;
+    border-radius: 9px;
+    border: 1px solid #604276;
+    background: #8048a8;
+    color: white;
+    cursor: pointer;
+}
+
+.question-actions .delete-button {
+    background: transparent;
+    border-color: #b85b77;
+    color: #ffc2d3;
+}
+
+.bank-pagination {
+    margin-top: 24px;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.question-dialog {
+    width: min(90vw, 600px);
+    box-sizing: border-box;
+    background: #241333;
+    color: white;
+    border: 1px solid #604276;
+    border-radius: 18px;
+    padding: 28px;
+}
+
+.question-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.75);
+}
+
+.question-dialog textarea {
+    resize: vertical;
+}
+
+.dialog-actions {
+    margin-top: 15px;
+}
+
+.empty-bank {
+    color: #bbaaca;
+    padding: 25px;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    .bank-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .bank-filters {
+        grid-template-columns: 1fr;
+    }
+
+    .bank-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+/* =========================================
+   MCQ QUESTION BANK
+   ========================================= */
+
+   [hidden] {
+    display: none !important;
+}
+
+.mcq-help-text {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    opacity: 0.8;
+    margin: 12px 0;
+}
+
+.mcq-question-card {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 18px 0;
+    padding: 22px;
+    border: 1px solid rgba(152, 80, 168, 0.35);
+    border-radius: 16px;
+    background: rgba(48, 0, 80, 0.08);
+}
+
+.mcq-question-title {
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.mcq-status {
+    align-self: flex-start;
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.mcq-status-ready {
+    color: #167347;
+    background: rgba(32, 177, 102, 0.13);
+}
+
+.mcq-status-incomplete {
+    color: #a56816;
+    background: rgba(255, 177, 55, 0.14);
+}
+
+.mcq-options-list {
+    display: grid;
+    gap: 10px;
+}
+
+.mcq-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 13px 15px;
+    border: 1px solid rgba(152, 80, 168, 0.25);
+    border-radius: 10px;
+    overflow-wrap: anywhere;
+}
+
+.mcq-option-letter {
+    min-width: 24px;
+    color: #9850a8;
+}
+
+.mcq-option-text {
+    flex: 1;
+    white-space: pre-wrap;
+}
+
+.mcq-option-correct {
+    border-color: #249660;
+    background: rgba(36, 150, 96, 0.12);
+}
+
+.mcq-correct-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #249660;
+    white-space: nowrap;
+}
+
+.mcq-explanation {
+    padding: 16px;
+    border-left: 4px solid #8048a8;
+    border-radius: 8px;
+    background: rgba(128, 72, 168, 0.1);
+    line-height: 1.6;
+}
+
+.mcq-explanation p {
+    margin: 8px 0 0;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.mcq-editor-dialog {
+    width: min(94vw, 680px);
+    max-height: 90vh;
+    overflow-y: auto;
+    border: 1px solid #9850a8;
+    border-radius: 18px;
+    padding: 28px;
+}
+
+.mcq-editor-dialog::backdrop {
+    background: rgba(20, 0, 35, 0.75);
+}
+
+.mcq-editor-dialog form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.mcq-editor-dialog textarea,
+.mcq-editor-dialog select {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgba(152, 80, 168, 0.45);
+    border-radius: 8px;
+    font: inherit;
+    color: inherit;
+    background: transparent;
+}
+
+.mcq-editor-dialog textarea:focus,
+.mcq-editor-dialog select:focus {
+    outline: 2px solid #8048a8;
+    outline-offset: 2px;
+}
+
+.mcq-editor-dialog label {
+    font-weight: 600;
+    margin-top: 6px;
+}
+
+.mcq-editor-dialog .dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+#playable-count {
+    font-weight: 600;
+}
+
+@media (max-width: 600px) {
+    .mcq-question-card {
+        padding: 15px;
+    }
+
+    .mcq-option {
+        flex-wrap: wrap;
+    }
+
+    .mcq-correct-label {
+        width: 100%;
+    }
+
+    .mcq-editor-dialog {
+        padding: 18px;
+    }
+}

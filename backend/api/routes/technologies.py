@@ -13,6 +13,7 @@ from backend.schemas.technology import (
     TechnologyResponse,
 )
 
+from backend.api.admin_auth import require_admin
 
 router = APIRouter(
     prefix="/technologies",
@@ -26,6 +27,7 @@ DbSession = Annotated[Session, Depends(get_db)]
     "/",
     response_model=TechnologyResponse,
     status_code=status.HTTP_201_CREATED,
+    dependencies=[Depends(require_admin)],
 )
 def create_technology(payload: TechnologyCreate, db: DbSession):
     technology = Technology(**payload.model_dump())
