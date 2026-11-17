@@ -9,6 +9,7 @@ from backend.database.base import Base
 
 # Import models so Alembic can detect their tables.
 from backend.models.technology import Technology
+from backend.models.question import Question
 
 
 # Alembic configuration object
