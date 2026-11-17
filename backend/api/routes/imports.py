@@ -32,7 +32,7 @@ MAX_FILE_SIZE = 5 * 1024 * 1024
 
 
 @router.post(
-    "/api/technologies/{technology_id}/{zone}",
+    "technologies/{technology_id}/{zone}",
     response_model=ImportResponse,
 )
 async def upload_questions(

@@ -488,3 +488,78 @@ button:disabled {
         padding: 18px;
     }
 }
+/* Create Technology World — Admin Panel */
+
+#create-world-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+    margin-top: 24px;
+}
+
+#create-world-form label {
+    display: block;
+    font-weight: 600;
+    margin: 0;
+}
+
+#create-world-form input,
+#create-world-form textarea {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 16px 18px;
+    border: 1px solid #67417f;
+    border-radius: 12px;
+    background: #160c26;
+    color: #ffffff;
+    font: inherit;
+    outline: none;
+}
+
+#create-world-form textarea {
+    resize: vertical;
+    min-height: 110px;
+}
+
+#create-world-form input:focus,
+#create-world-form textarea:focus {
+    border-color: #b879ec;
+    box-shadow: 0 0 0 3px rgba(184, 121, 236, 0.15);
+}
+
+#create-world-form button {
+    display: block;
+    width: 100%;
+    margin-top: 8px;
+    padding: 17px 20px;
+    border: 0;
+    border-radius: 12px;
+    background: linear-gradient(90deg, #8549ac, #a455d7);
+    color: white;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+#create-world-form button:hover {
+    filter: brightness(1.12);
+}
+
+#create-world-form button:disabled {
+    opacity: 0.65;
+    cursor: wait;
+}
+
+#world-message {
+    margin-top: 16px;
+}
+
+@media (max-width: 600px) {
+    #create-world-form input,
+    #create-world-form textarea {
+        font-size: 16px;
+    }
+}
