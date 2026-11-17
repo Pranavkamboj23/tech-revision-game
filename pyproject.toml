@@ -1,0 +1,20 @@
+[project]
+name = "tech-revision-game"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "PRANAV KAMBOJ", email = "pranavkamboj823.pk@gmail.com" }
+]
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi>=0.162.5",
+    "uvicorn[standard]>=0.54.0",
+]
+
+[project.scripts]
+tech-revision-game = "tech_revision_game:main"
+
+[build-system]
+requires = ["uv_build>=0.10,<0.14.0"]
+build-backend = "uv_build"
