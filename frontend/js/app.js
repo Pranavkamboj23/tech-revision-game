@@ -1,4 +1,3 @@
-
 "use strict";
 
 const $ = (id) => document.getElementById(id);
@@ -173,73 +172,6 @@ async function loadWorlds() {
         $("worlds-container").textContent =
             `Unable to load worlds: ${error.message}`;
     }
-}
-
-
-// =========================================
-// CREATE WORLD
-// =========================================
-// Preserved from your existing frontend.
-// This requires the backend to permit the
-// POST request. If creation is admin-only,
-// it should eventually move to /admin.
-// =========================================
-
-const createWorldForm = $("create-world-form");
-
-if (createWorldForm) {
-    createWorldForm.addEventListener(
-        "submit",
-        async (event) => {
-            event.preventDefault();
-
-            const name = $("world-name").value.trim();
-
-            const description = $(
-                "world-description"
-            ).value.trim();
-
-            const slug = slugify(name);
-
-            if (!slug) {
-                $("form-message").textContent =
-                    "Use a name containing letters or numbers.";
-
-                return;
-            }
-
-            const button = createWorldForm.querySelector(
-                'button[type="submit"]'
-            );
-
-            button.disabled = true;
-
-            $("form-message").textContent =
-                "Creating world...";
-
-            try {
-                await technologyAPI.create({
-                    name,
-                    slug,
-                    description: description || null
-                });
-
-                createWorldForm.reset();
-
-                $("form-message").textContent =
-                    "World created successfully!";
-
-                await loadWorlds();
-
-            } catch (error) {
-                $("form-message").textContent =
-                    error.message;
-
-            } finally {
-                button.disabled = false;
-            }
-        }
-    );
 }
 
 

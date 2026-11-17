@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -92,7 +91,7 @@
                         ADMINISTRATION
                     </span>
 
-                    <h1>MCQ Question Management</h1>
+                    <h1>Technology &amp; MCQ Management</h1>
 
                     <p>
                         Upload and manage multiple-choice
@@ -108,6 +107,24 @@
                     Logout
                 </button>
             </div>
+
+            <!-- Create Technology World (admin-only) -->
+            <section class="admin-panel">
+                <h2>Create Technology World</h2>
+                <p>Add a learning world before uploading its MCQ questions.</p>
+                <form id="create-world-form">
+                    <label for="world-name">Technology name</label>
+                    <input id="world-name" type="text" maxlength="100"
+                           placeholder="e.g. RAG" required>
+
+                    <label for="world-description">Description</label>
+                    <textarea id="world-description" rows="3"
+                              placeholder="What will learners explore?"></textarea>
+
+                    <button type="submit">+ Create World</button>
+                </form>
+                <p id="world-message" role="status" aria-live="polite"></p>
+            </section>
 
             <!-- Upload -->
             <section class="admin-panel">
