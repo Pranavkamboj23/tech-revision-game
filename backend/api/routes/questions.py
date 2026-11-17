@@ -43,8 +43,7 @@ def is_playable(question: Question) -> bool:
             isinstance(value, str) and value.strip()
             for value in fields
         )
-        and question.correct_answer
-        in ("A", "B", "C", "D")
+        and question.correct_answer in ("A", "B", "C", "D")
         and len({
             " ".join(value.casefold().split())
             for value in (
@@ -75,8 +74,6 @@ def get_random_questions(
             detail="Technology not found",
         )
 
-    # Legacy flashcards have NULL MCQ fields
-    # and must not appear in gameplay.
     statement = (
         select(Question)
         .where(
@@ -86,25 +83,13 @@ def get_random_questions(
             Question.option_b.is_not(None),
             Question.option_c.is_not(None),
             Question.option_d.is_not(None),
-            Question.correct_answer.in_(
-                ("A", "B", "C", "D")
-            ),
+            Question.correct_answer.in_(("A", "B", "C", "D")),
             Question.explanation.is_not(None),
-            func.length(
-                func.trim(Question.option_a)
-            ) > 0,
-            func.length(
-                func.trim(Question.option_b)
-            ) > 0,
-            func.length(
-                func.trim(Question.option_c)
-            ) > 0,
-            func.length(
-                func.trim(Question.option_d)
-            ) > 0,
-            func.length(
-                func.trim(Question.explanation)
-            ) > 0,
+            func.length(func.trim(Question.option_a)) > 0,
+            func.length(func.trim(Question.option_b)) > 0,
+            func.length(func.trim(Question.option_c)) > 0,
+            func.length(func.trim(Question.option_d)) > 0,
+            func.length(func.trim(Question.explanation)) > 0,
         )
         .order_by(func.random())
         .limit(limit)
