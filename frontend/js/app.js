@@ -1,4 +1,26 @@
 
+const dashboardView = document.getElementById(
+    "dashboard-view"
+);
+
+const worldView = document.getElementById(
+    "world-view"
+);
+
+const selectedWorldName = document.getElementById(
+    "selected-world-name"
+);
+
+const selectedWorldDescription = document.getElementById(
+    "selected-world-description"
+);
+
+const backToWorldsButton = document.getElementById(
+    "back-to-worlds"
+);
+
+let activeWorld = null;
+
 const worldsContainer = document.getElementById(
     "worlds-container"
 );
@@ -37,6 +59,32 @@ function getWorldIcon(name) {
     return icons[name.toLowerCase()] || "✨";
 }
 
+
+function openWorld(world) {
+    activeWorld = world;
+
+    selectedWorldName.textContent =
+        `${getWorldIcon(world.name)} ${world.name} World`;
+
+    selectedWorldDescription.textContent =
+        world.description || "Choose your learning path.";
+
+    dashboardView.hidden = true;
+    worldView.hidden = false;
+
+    window.scrollTo(0, 0);
+}
+
+function showDashboard() {
+    activeWorld = null;
+
+    worldView.hidden = true;
+    dashboardView.hidden = false;
+
+    window.scrollTo(0, 0);
+}
+
+
 function renderWorlds(worlds) {
     worldsContainer.replaceChildren();
 
@@ -68,11 +116,11 @@ function renderWorlds(worlds) {
         button.type = "button";
         button.textContent = "Enter World";
 
+        
         button.addEventListener("click", () => {
-            window.alert(
-                `${world.name} learning zones are coming next!`
-            );
-        });
+            openWorld(world);
+         });
+
 
         card.append(icon, title, description, button);
         worldsContainer.appendChild(card);
@@ -134,3 +182,25 @@ createWorldForm.addEventListener("submit", async (event) => {
 });
 
 loadWorlds();
+
+backToWorldsButton.addEventListener(
+    "click",
+    showDashboard
+);
+
+document.querySelectorAll(
+    ".zone-card button"
+).forEach((button) => {
+    button.addEventListener("click", () => {
+        if (!activeWorld) {
+            return;
+        }
+
+        const zone = button.dataset.zone;
+
+        // Temporary until we build the topic and quiz screens.
+        window.alert(
+            `Opening ${zone} zone for ${activeWorld.name}`
+        );
+    });
+});

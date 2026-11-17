@@ -23,7 +23,8 @@
         <span class="header-label">Your learning adventure</span>
     </header>
 
-    <main class="dashboard">
+    <main class="dashboard" id="dashboard-view">
+ 
         <section class="hero">
             <span class="eyebrow">THE LEARNING REALMS</span>
             <h1>Choose Your World</h1>
@@ -73,5 +74,81 @@
             </form>
         </section>
     </main>
+
+<main
+class="dashboard"
+id="world-view"
+hidden
+>
+<button
+    id="back-to-worlds"
+    class="back-button"
+    type="button"
+>
+    ← Back to Worlds
+</button>
+
+<section class="hero">
+    <span class="eyebrow">YOUR LEARNING ADVENTURE</span>
+
+    <h1 id="selected-world-name"></h1>
+
+    <p id="selected-world-description"></p>
+</section>
+
+<section class="zones-section">
+    <div class="section-heading">
+        <h2>Choose Your Learning Zone</h2>
+    </div>
+
+    <div class="zones-grid">
+        <article class="zone-card">
+            <span class="zone-icon">📖</span>
+            <h3>Basics</h3>
+            <p>
+                Master fundamental concepts,
+                terminology and definitions.
+            </p>
+            <button
+                type="button"
+                data-zone="basics"
+            >
+                Enter Basics
+            </button>
+        </article>
+
+        <article class="zone-card">
+            <span class="zone-icon">🎯</span>
+            <h3>Interview</h3>
+            <p>
+                Practice technical questions,
+                explanations and scenarios.
+            </p>
+            <button
+                type="button"
+                data-zone="interview"
+            >
+                Enter Interview
+            </button>
+        </article>
+
+        <article class="zone-card">
+            <span class="zone-icon">💻</span>
+            <h3>Coding</h3>
+            <p>
+                Solve programming challenges
+                and strengthen practical skills.
+            </p>
+            <button
+                type="button"
+                data-zone="coding"
+            >
+                Enter Coding
+            </button>
+        </article>
+    </div>
+</section>
+</main>
+
 </body>
 </html>
