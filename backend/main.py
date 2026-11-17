@@ -1,24 +1,39 @@
 
+from pathlib import Path
+
 from fastapi import FastAPI
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
+
+from backend.api.routes.technologies import (
+    router as technologies_router,
+)
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+FRONTEND_DIR = BASE_DIR / "frontend"
 
 app = FastAPI(
     title="Tech Revision Game API",
-    description="A gamified technical learning and revision platform",
-    version="0.1.0"
+    version="0.1.0",
+)
+
+app.include_router(
+    technologies_router,
+    prefix="/api",
+)
+
+app.mount(
+    "/static",
+    StaticFiles(directory=FRONTEND_DIR),
+    name="static",
 )
 
 
-@app.get("/")
-async def home():
-    return {
-        "message": "Welcome to Tech Revision Game!",
-        "status": "running",
-        "version": "0.1.0"
-    }
+@app.get("/", include_in_schema=False)
+def home():
+    return FileResponse(FRONTEND_DIR / "index.html")
 
 
 @app.get("/health")
-async def health_check():
-    return {
-        "status": "healthy"
-    }
+def health():
+    return {"status": "healthy"}

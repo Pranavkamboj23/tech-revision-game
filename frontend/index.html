@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Tech Revision Game</title>
+
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="/static/js/api.js" defer></script>
+    <script src="/static/js/app.js" defer></script>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="brand">
+            <span class="brand-icon">✦</span>
+            <span>TECH REVISION GAME</span>
+        </div>
+
+        <span class="header-label">Your learning adventure</span>
+    </header>
+
+    <main class="dashboard">
+        <section class="hero">
+            <span class="eyebrow">THE LEARNING REALMS</span>
+            <h1>Choose Your World</h1>
+            <p>
+                Explore technologies, master concepts,
+                and prepare for technical interviews.
+            </p>
+        </section>
+
+        <section class="worlds-section">
+            <div class="section-heading">
+                <h2>Technology Worlds</h2>
+                <span id="world-count">0 worlds</span>
+            </div>
+
+            <div id="worlds-container" class="worlds-grid">
+                <p>Loading your worlds...</p>
+            </div>
+        </section>
+
+        <section class="create-section">
+            <h2>Unlock a New World</h2>
+            <p>Add another technology to your adventure.</p>
+
+            <form id="create-world-form">
+                <label for="world-name">Technology name</label>
+                <input
+                    id="world-name"
+                    type="text"
+                    placeholder="e.g. RAG"
+                    maxlength="100"
+                    required
+                >
+
+                <label for="world-description">Description</label>
+                <textarea
+                    id="world-description"
+                    placeholder="What will you learn?"
+                    rows="3"
+                ></textarea>
+
+                <button type="submit">
+                    + Create World
+                </button>
+
+                <p id="form-message" role="status"></p>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
