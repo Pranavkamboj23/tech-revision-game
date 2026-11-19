@@ -10,7 +10,7 @@ const views = [
 ];
 
 const LETTERS = ["A", "B", "C", "D"];
-const LIMIT = 10;
+const LIMIT = 25;
 
 let activeWorld = null;
 let activeZone = null;
